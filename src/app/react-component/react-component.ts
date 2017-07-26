@@ -7,25 +7,25 @@ import { Component, Input } from '@angular/core';
     template: '<div [id]="id">wrapper</div>'
 })
 export class ReactComponent {
-    @Input() public component: any;
-    @Input() public props: Object;
-    id: number;
-    drawNode: any;
+    @Input() public component: any
+    @Input() public props: Object
+    id: number
+    drawNode: any
     ngOnInit() {
-        this.id = Math.floor(Math.random() * 9999999);
+        this.id = Math.floor(Math.random() * 9999999)
     }
     ngAfterViewInit() {
-        this.drawNode = document.getElementById(this.id.toString());
-		this.render();
+        this.drawNode = document.getElementById(this.id.toString())
+		this.render()
     }
     ngOnChanges() {
         if (this.drawNode) {
-			this.render();
+			this.render()
         }
     }
     render() {
         // NOT SURE：
-        // React.render(React.createElement(this.component, this.props), this.drawNode);
-		ReactDOM.render(React.createElement(this.component, this.props), this.drawNode);
+        // React.render(React.createElement(this.component, this.props), this.drawNode)
+		ReactDOM.render(React.createElement(this.component, this.props), this.drawNode)
     }
 }
