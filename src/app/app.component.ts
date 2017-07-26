@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import  MyComponent from './my-component/my-component.component';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: '<h1>My First Angular App</h1><react-component [component]="embedComponent" [props]="embedComponentProps"></react-component>',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+	embedComponent = MyComponent;
+	embedComponentProps = {
+		"name": "person"
+	}
 }
