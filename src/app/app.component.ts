@@ -4,12 +4,13 @@ import  MyComponent from './my-component/my-component.component';
 
 @Component({
   selector: 'app-root',
-  template: '<h1>My First Angular App</h1><react-component [component]="embedComponent" [props]="embedComponentProps"></react-component>',
-	directives: [ReactComponent]
+  template: `<h1>My First Angular App</h1>
+						 <react-component
+						 	[component]="embedComponent"
+							[props]="embedComponentProps">
+						 </react-component>`
 })
 export class AppComponent {
 	embedComponent = MyComponent;
-	embedComponentProps = {
-		"name": "person"
-	}
+	embedComponentProps = { "name": "person" }
 }
