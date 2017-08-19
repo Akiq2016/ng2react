@@ -1,35 +1,29 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'react-component',
   template: '<div [id]="id">wrapper</div>'
 })
-export class ReactComponent {
+export class ReactComponent implements OnInit, OnChanges, AfterViewInit {
+
   @Input() public component: any
   @Input() public props: Object
-  id: number
-  drawNode: any
+  public id: number
+  private drawNode: any
 
-  ngOnChanges() {
+  ngOnChanges () {
     if (this.drawNode) this.render()
   }
-  ngOnInit() {
+  ngOnInit () {
     this.id = Math.floor(Math.random() * 9999999)
   }
-  ngAfterViewInit() {
+  ngAfterViewInit () {
     this.drawNode = document.getElementById(this.id.toString())
     this.render()
   }
-
-  render() {
+  render () {
     ReactDOM.render(React.createElement(this.component, this.props), this.drawNode)
   }
 }
-
-  // ReactDOM.render(
-  //   element,
-  //   container,
-  //   [callback]
-  // )
